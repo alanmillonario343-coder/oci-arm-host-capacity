@@ -2,6 +2,7 @@ name: Tests
 
 on:
 name: Pruebas
+workflow_dispatch:
   push:
     branches:
       - main
@@ -20,11 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['8.3']
-    name: integration-tests (PHP ${{ matrix.php-versions }})
+        php-versions: ['8.3'
     steps:
       - uses: actions/checkout@v1
-      - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
